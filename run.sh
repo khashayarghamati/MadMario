@@ -24,7 +24,7 @@ echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
 
-module load python3
+#module load python3
 
 export PATH=$HOME/miniconda3/bin:$PATH
 
