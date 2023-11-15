@@ -26,7 +26,7 @@ echo  -n 'Installing requirements'
 
 module load python3
 
-export PATH=$HOME/anaconda3/bin:$PATH
+export PATH=$HOME/miniconda3/bin:$PATH
 
 source activate mario
 
