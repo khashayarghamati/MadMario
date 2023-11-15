@@ -1,5 +1,5 @@
 #!/bin/tcsh -f
-#PBS -N C3D_1_F_SubGroup
+#PBS -N DQNRL
 #PBS -m abe
 #PBS -l walltime=24:00:00
 #PBS -l nodes=1:ppn=16
