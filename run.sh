@@ -28,7 +28,7 @@ module load python3
 
 export PATH=$HOME/miniconda3/bin:$PATH
 
-source activate mario
+source activate mario1
 
 
 
