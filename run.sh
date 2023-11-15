@@ -27,10 +27,7 @@ echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
 
-conda env create -f /home2/kg23aay/workspace/MadMario/environment.yml
-conda activate mario
-
-pip3 install -r /home2/kg23aay/workspace/MadMario/requirements.txt
+pip install -r /home2/kg23aay/workspace/MadMario/requirements.txt
 #pip3 list
 
 echo ------------------------------------------------------
