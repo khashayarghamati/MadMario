@@ -22,8 +22,19 @@ echo PBS: current home directory is $PBS_O_HOME
 echo PBS: PATH = $PBS_O_PATH
 echo ------------------------------------------------------
 
+echo  -n 'Installing requirements'
+
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+pip3 list
+
+echo ------------------------------------------------------
+
 eval `/usr/bin/modulecmd tcsh load cuda-10.1`
 
-python $PWD/replay.py
+echo -n 'Running Model'
+#python $PWD/replay.py
+python $PWD/main.py
 echo ------------------------------------------------------
 echo Job ends
