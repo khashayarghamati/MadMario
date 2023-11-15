@@ -25,7 +25,7 @@ echo ------------------------------------------------------
 echo  -n 'Installing requirements'
 #CODEPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-pip3 install -r "$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"/requirements.txt
+pip3 install -r "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/requirements.txt
 pip3 list
 
 echo ------------------------------------------------------
@@ -34,6 +34,6 @@ eval `/usr/bin/modulecmd tcsh load cuda-10.1`
 
 echo -n 'Running Model'
 #python $PWD/replay.py
-python "$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"/main.py
+python "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/main.py
 echo ------------------------------------------------------
 echo Job ends
