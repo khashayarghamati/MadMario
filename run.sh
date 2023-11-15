@@ -24,9 +24,11 @@ echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
 
-python3 -m pip install --upgrade pip
-python3 -m pip install -r /home2/kg23aay/workspace/MadMario/requirements.txt
-#pip3 list
+module load python3
+
+cd $PBS_O_WORKDIR
+source activate mario
+
 
 echo ------------------------------------------------------
 
@@ -34,6 +36,6 @@ eval `/usr/bin/modulecmd tcsh load cuda-10.1`
 
 echo -n 'Running Model'
 #python $PWD/replay.py
-python /home2/kg23aay/workspace/MadMario/main.py
+mpiexec python /home2/kg23aay/workspace/MadMario/main.py
 echo ------------------------------------------------------
 echo Job ends
