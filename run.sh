@@ -7,7 +7,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 #PBS -l walltime=24:00:00
 #PBS -l nodes=1:ppn=16
 #PBS -k oe
-#PBS -o $SCRIPTPATH/outputs
+#PBS -o outputs
 #PBS -l pmem=1gb
 #PBS -q gpu
 
