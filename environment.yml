@@ -24,7 +24,7 @@ dependencies:
       - gym==0.21.0
       - gym-super-mario-bros==7.3.2
       - nes-py==8.1.8
-      - numpy==1.21.0
+      - numpy==1.18.4
       - matplotlib==3.4.3
       - opencv-python==4.5.3.56
       - pillow==8.3.2
