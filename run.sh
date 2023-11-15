@@ -23,10 +23,9 @@ echo PBS: PATH = $PBS_O_PATH
 echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
+echo $PWD
 
-python3 -m venv venv
-source venv/bin/activate
-pip3 install -r requirements.txt
+pip3 install -r $PWD/requirements.txt
 pip3 list
 
 echo ------------------------------------------------------
