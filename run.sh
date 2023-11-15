@@ -1,7 +1,4 @@
 #!/bin/tcsh -f
-
-SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-
 #PBS -N DQNRL
 #PBS -m abe
 #PBS -l walltime=24:00:00
@@ -26,7 +23,7 @@ echo PBS: PATH = $PBS_O_PATH
 echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
-
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 pip3 install -r $SCRIPTPATH/requirements.txt
 pip3 list
