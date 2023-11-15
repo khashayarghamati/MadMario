@@ -1,4 +1,7 @@
 #!/bin/tcsh -f
+
+module load python3
+
 #PBS -N DQNRL
 #PBS -m abe
 #PBS -l walltime=24:00:00
@@ -23,14 +26,11 @@ echo PBS: PATH = $PBS_O_PATH
 echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
-wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh
-chmod +x Anaconda3-2021.05-Linux-x86_64.sh
-./Anaconda3-2021.05-Linux-x86_64.sh
 
 conda env create -f /home2/kg23aay/workspace/MadMario/environment.yml
 conda activate mario
 
-#pip3 install -r /home2/kg23aay/workspace/MadMario/requirements.txt
+pip3 install -r /home2/kg23aay/workspace/MadMario/requirements.txt
 #pip3 list
 
 echo ------------------------------------------------------
