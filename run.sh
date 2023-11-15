@@ -23,9 +23,9 @@ echo PBS: PATH = $PBS_O_PATH
 echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
-SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+CODEPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-pip3 install -r $SCRIPTPATH/requirements.txt
+pip3 install -r $CODEPATH/requirements.txt
 pip3 list
 
 echo ------------------------------------------------------
@@ -34,6 +34,6 @@ eval `/usr/bin/modulecmd tcsh load cuda-10.1`
 
 echo -n 'Running Model'
 #python $PWD/replay.py
-python $SCRIPTPATH/main.py
+python $CODEPATH/main.py
 echo ------------------------------------------------------
 echo Job ends
