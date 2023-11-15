@@ -24,10 +24,7 @@ echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
 
-module load python3
-
-cd $PBS_O_WORKDIR
-source activate mario
+source /home2/kg23aay/anaconda3/bin/activate mario
 
 
 echo ------------------------------------------------------
@@ -36,6 +33,6 @@ eval `/usr/bin/modulecmd tcsh load cuda-10.1`
 
 echo -n 'Running Model'
 #python $PWD/replay.py
-mpiexec python /home2/kg23aay/workspace/MadMario/main.py
+python /home2/kg23aay/workspace/MadMario/main.py
 echo ------------------------------------------------------
 echo Job ends
