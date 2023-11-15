@@ -23,7 +23,7 @@ echo PBS: PATH = $PBS_O_PATH
 echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
-echo $PWD
+echo realpath
 
 pip3 install -r $PWD/requirements.txt
 pip3 list
