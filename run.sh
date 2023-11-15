@@ -1,4 +1,4 @@
-#!/bin/tcsh -f
+#!/bin/bash -l
 #PBS -N DQNRL
 #PBS -m abe
 #PBS -l walltime=24:00:00
@@ -24,7 +24,12 @@ echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
 
-source /home2/kg23aay/anaconda3/bin/activate mario
+module load python3
+
+export PATH=$HOME/anaconda3/bin:$PATH
+
+source activate mario
+
 
 
 echo ------------------------------------------------------
