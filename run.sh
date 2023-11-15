@@ -34,7 +34,7 @@ source activate mario6
 
 echo ------------------------------------------------------
 
-eval `/usr/bin/modulecmd tcsh load cuda-10.1`
+#eval `/usr/bin/modulecmd tcsh load cuda-10.1`
 
 echo -n 'Running Model'
 #python $PWD/replay.py
