@@ -1,4 +1,4 @@
-name: mario1
+name: mario2
 channels:
   - defaults
 dependencies:
@@ -10,7 +10,7 @@ dependencies:
   - ncurses=6.2
   - openssl=1.1
   - pip=20.0.2=py38_3
-  - python=3.8.3
+  - python=3.6
   - readline=8.0
   - setuptools=46.4.0=py38_0
   - sqlite=3.31.1
@@ -24,7 +24,7 @@ dependencies:
       - gym==0.21.0
       - gym-super-mario-bros==7.3.2
       - nes-py==8.1.8
-      - numpy==1.18.4
+      - numpy
       - matplotlib==3.4.3
       - opencv-python==4.5.3.56
       - pillow==8.3.2
