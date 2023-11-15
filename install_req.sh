@@ -1,3 +1,4 @@
+module load python3
 unset PYTHONPATH
 python3 -m venv test_venv
 source test_venv/bin/activate
