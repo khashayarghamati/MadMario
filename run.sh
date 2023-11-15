@@ -24,6 +24,7 @@ echo ------------------------------------------------------
 
 echo  -n 'Installing requirements'
 
+pip install --upgrade pip
 pip install -r /home2/kg23aay/workspace/MadMario/requirements.txt
 #pip3 list
 
