@@ -28,7 +28,7 @@ echo  -n 'Installing requirements'
 
 export PATH=$HOME/miniconda3/bin:$PATH
 
-source activate mario6
+source activate mario7
 
 
 
