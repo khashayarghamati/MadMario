@@ -1,7 +1,4 @@
 #!/bin/tcsh -f
-
-module load python3
-
 #PBS -N DQNRL
 #PBS -m abe
 #PBS -l walltime=24:00:00
