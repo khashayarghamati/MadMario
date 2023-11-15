@@ -1,3 +1,4 @@
+unset PYTHONPATH
 python3 -m venv test_venv
 source test_venv/bin/activate
 pip3 install --upgrade pip
