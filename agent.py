@@ -4,10 +4,17 @@ from pathlib import Path
 
 from neural import MarioNet
 from collections import deque
+import neptune
 
 
 class Mario:
     def __init__(self, state_dim, action_dim, save_dir, checkpoint=None):
+        self.run = neptune.init_run(
+            project="khashayar/MadMario",
+            api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiI2YzhjYmU2Zi03ODBjLTQ4YjEtODAzMy1lOTJhN2Q1YWU1YjUifQ==",
+        )
+
+
         self.state_dim = state_dim
         self.action_dim = action_dim
         self.memory = deque(maxlen=100000)
@@ -38,6 +45,17 @@ class Mario:
         self.optimizer = torch.optim.Adam(self.net.parameters(), lr=0.00025)
         self.loss_fn = torch.nn.SmoothL1Loss()
 
+        self.log_neptune()
+
+    def log_neptune(self):
+        params = dict(batch_size=self.batch_size,
+                      gamma=self.gamma,
+                      exploration_rate=self.exploration_rate,
+                      exploration_rate_decay=self.exploration_rate_decay,
+                      exploration_rate_min=self.exploration_rate_min,
+                      curr_step=self.curr_step,
+                      )
+        self.run["parameters"] = params
 
     def act(self, state):
         """
@@ -122,6 +140,7 @@ class Mario:
 
 
     def learn(self):
+        self.log_neptune()
         if self.curr_step % self.sync_every == 0:
             self.sync_Q_target()
 

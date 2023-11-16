@@ -13,6 +13,7 @@ from metrics import MetricLogger
 from agent import Mario
 from wrappers import ResizeObservation, SkipFrame
 
+
 # Initialize Super Mario environment
 env = gym_super_mario_bros.make('SuperMarioBros-1-1-v0')
 

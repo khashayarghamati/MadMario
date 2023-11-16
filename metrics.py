@@ -1,6 +1,8 @@
 import numpy as np
 import time, datetime
 import matplotlib.pyplot as plt
+import neptune
+from neptune.types import File
 
 class MetricLogger():
     def __init__(self, save_dir):
@@ -34,6 +36,12 @@ class MetricLogger():
         # Timing
         self.record_time = time.time()
 
+        self.run = neptune.init_run(
+            project="khashayar/MadMario",
+            api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiI2YzhjYmU2Zi03ODBjLTQ4YjEtODAzMy1lOTJhN2Q1YWU1YjUifQ==",
+        )
+
+
 
     def log_step(self, reward, loss, q):
         self.curr_ep_reward += reward
@@ -42,6 +50,14 @@ class MetricLogger():
             self.curr_ep_loss += loss
             self.curr_ep_q += q
             self.curr_ep_loss_length += 1
+
+        params = dict(curr_ep_reward=self.curr_ep_reward,
+                      curr_ep_length=self.curr_ep_length,
+                      curr_ep_loss=self.curr_ep_loss,
+                      curr_ep_q=self.curr_ep_q,
+                      curr_ep_loss_length=self.curr_ep_loss_length
+                      )
+        self.run["log_step"] = params
 
     def log_episode(self):
         "Mark end of episode"
@@ -57,6 +73,7 @@ class MetricLogger():
         self.ep_avg_qs.append(ep_avg_q)
 
         self.init_episode()
+
 
     def init_episode(self):
         self.curr_ep_reward = 0.0
@@ -92,6 +109,19 @@ class MetricLogger():
             f"Time {datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')}"
         )
 
+        params = dict(Episode=episode,
+                      Step=step,
+                      Epsilon=epsilon,
+                      Mean_Reward=mean_ep_length,
+                      Mean_Length=mean_ep_length,
+                      Mean_Loss=mean_ep_loss,
+                      Mean_Q_Value=mean_ep_q,
+                      Time_Delta=time_since_last_record,
+                      Time=datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S'),
+
+                      )
+        self.run["run"] = params
+
         with open(self.save_log, "a") as f:
             f.write(
                 f"{episode:8d}{step:8d}{epsilon:10.3f}"
@@ -103,4 +133,5 @@ class MetricLogger():
         for metric in ["ep_rewards", "ep_lengths", "ep_avg_losses", "ep_avg_qs"]:
             plt.plot(getattr(self, f"moving_avg_{metric}"))
             plt.savefig(getattr(self, f"{metric}_plot"))
+            self.run[f"{metric}_plot"].upload(plt)
             plt.clf()

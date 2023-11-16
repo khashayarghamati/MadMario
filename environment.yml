@@ -34,4 +34,5 @@ dependencies:
       - torch==1.9.1
       - torchvision==0.10.1
       - tqdm==4.62.3
+      - neptune
 prefix: /opt/miniconda3/envs/mario7
