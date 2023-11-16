@@ -133,5 +133,5 @@ class MetricLogger():
         for metric in ["ep_rewards", "ep_lengths", "ep_avg_losses", "ep_avg_qs"]:
             plt.plot(getattr(self, f"moving_avg_{metric}"))
             plt.savefig(getattr(self, f"{metric}_plot"))
-            self.run[f"{metric}_plot"].upload(plt.figimage)
+            self.run[f"{metric}_plot"].upload(plt.figimage())
             plt.clf()
