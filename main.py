@@ -77,7 +77,6 @@ for e in range(episodes):
         if done or info['flag_get']:
             break
 
-    mario.save()
     logger.log_episode()
 
     if e % 20 == 0:
