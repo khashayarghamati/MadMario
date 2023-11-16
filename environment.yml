@@ -1,4 +1,4 @@
-name: mario7
+name: mario8
 channels:
   - defaults
 dependencies:
@@ -35,4 +35,4 @@ dependencies:
       - torchvision==0.10.1
       - tqdm==4.62.3
       - neptune
-prefix: /opt/miniconda3/envs/mario7
+prefix: /opt/miniconda3/envs/mario8
