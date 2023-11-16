@@ -49,13 +49,6 @@ class MetricLogger():
             self.curr_ep_q += q
             self.curr_ep_loss_length += 1
 
-        params = dict(curr_ep_reward=self.curr_ep_reward,
-                      curr_ep_length=self.curr_ep_length,
-                      curr_ep_loss=self.curr_ep_loss,
-                      curr_ep_q=self.curr_ep_q,
-                      curr_ep_loss_length=self.curr_ep_loss_length
-                      )
-        self.run["log_step"] = params
 
     def log_episode(self):
         "Mark end of episode"
