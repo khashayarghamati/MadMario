@@ -1,8 +1,9 @@
 import numpy as np
 import time, datetime
 import matplotlib.pyplot as plt
-import neptune
-from neptune.types import File
+
+from neptune import Neptune
+
 
 class MetricLogger():
     def __init__(self, save_dir):
@@ -36,10 +37,7 @@ class MetricLogger():
         # Timing
         self.record_time = time.time()
 
-        self.run = neptune.init_run(
-            project="khashayar/MadMario",
-            api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiI2YzhjYmU2Zi03ODBjLTQ4YjEtODAzMy1lOTJhN2Q1YWU1YjUifQ==",
-        )
+
 
 
 
@@ -109,18 +107,15 @@ class MetricLogger():
             f"Time {datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')}"
         )
 
-        params = dict(Episode=episode,
-                      Step=step,
-                      Epsilon=epsilon,
-                      Mean_Reward=mean_ep_length,
-                      Mean_Length=mean_ep_length,
-                      Mean_Loss=mean_ep_loss,
-                      Mean_Q_Value=mean_ep_q,
-                      Time_Delta=time_since_last_record,
-                      Time=datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S'),
-
-                      )
-        self.run["run"] = params
+        Neptune().save_chart("Episode", episode)
+        Neptune().save_chart("Step", step)
+        Neptune().save_chart("Epsilon", epsilon)
+        Neptune().save_chart("Mean_Reward", mean_ep_reward)
+        Neptune().save_chart("Mean_Length", mean_ep_length)
+        Neptune().save_chart("Mean_Loss", mean_ep_loss)
+        Neptune().save_chart("Mean_Q_Value", mean_ep_q)
+        Neptune().save_chart("Time_Delta", time_since_last_record)
+        Neptune().save_chart("Time", datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
 
         with open(self.save_log, "a") as f:
             f.write(
@@ -133,5 +128,6 @@ class MetricLogger():
         for metric in ["ep_rewards", "ep_lengths", "ep_avg_losses", "ep_avg_qs"]:
             plt.plot(getattr(self, f"moving_avg_{metric}"))
             plt.savefig(getattr(self, f"{metric}_plot"))
-            self.run[f"{metric}_plot"].upload(plt.gcf())
+            Neptune().save_figure(f"{metric}_plot", plt.gcf())
+
             plt.clf()
