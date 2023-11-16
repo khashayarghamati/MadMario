@@ -2,7 +2,7 @@ import numpy as np
 import time, datetime
 import matplotlib.pyplot as plt
 
-from neptune import Neptune
+from neptune_kit import Neptune
 
 
 class MetricLogger():

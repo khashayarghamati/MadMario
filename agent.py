@@ -4,7 +4,7 @@ from pathlib import Path
 
 from neural import MarioNet
 from collections import deque
-from neptune import Neptune
+from neptune_kit import Neptune
 
 
 class Mario:
