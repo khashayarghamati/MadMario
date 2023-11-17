@@ -24,7 +24,7 @@ class Mario:
         self.learn_every = 3   # no. of experiences between updates to Q_online
         self.sync_every = 1e4   # no. of experiences between Q_target & Q_online sync
 
-        self.save_every = 5e5   # no. of experiences between saving Mario Net
+        self.save_every = 5   # no. of experiences between saving Mario Net
         self.save_dir = save_dir
 
         self.use_cuda = torch.cuda.is_available()
@@ -177,7 +177,7 @@ class Mario:
         if not load_path.exists():
             raise ValueError(f"{load_path} does not exist")
 
-        ckp = torch.load(load_path, map_location=('cuda' if self.use_cuda else 'cpu'))
+        ckp = torch.load(load_path.name, map_location=('cuda' if self.use_cuda else 'cpu'))
         exploration_rate = ckp.get('exploration_rate')
         state_dict = ckp.get('model')
 
