@@ -30,6 +30,10 @@ class Mario:
         self.use_cuda = torch.cuda.is_available()
 
         # Mario's DNN to predict the most optimal action - we implement this in the Learn section
+        print('self.state_dim')
+        print(self.state_dim)
+        print('\n self.action_dim \n')
+        print(self.action_dim)
         self.net = MarioNet(self.state_dim, self.action_dim).float()
         if self.use_cuda:
             self.net = self.net.to(device='cuda')
