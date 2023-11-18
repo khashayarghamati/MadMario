@@ -35,4 +35,5 @@ dependencies:
       - torchvision==0.10.1
       - tqdm==4.62.3
       - neptune
+      - pathlib
 prefix: /opt/miniconda3/envs/mario7
