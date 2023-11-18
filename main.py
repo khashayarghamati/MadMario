@@ -43,7 +43,7 @@ mario = Mario(state_dim=(4, 84, 84), action_dim=env.action_space.n, save_dir=sav
 
 logger = MetricLogger(save_dir)
 
-episodes = 1000
+episodes = 20
 
 ### for Loop that train the model num_episodes times by playing the game
 for e in range(episodes):
@@ -61,6 +61,7 @@ for e in range(episodes):
 
         # 5. Agent performs action
         next_state, reward, done, info = env.step(action)
+        print(f'Next State {next_state}')
 
         # 6. Remember
         mario.cache(state, next_state, action, reward, done)
