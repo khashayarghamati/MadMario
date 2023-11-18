@@ -71,6 +71,10 @@ class Mario:
             state = torch.FloatTensor(state).cuda() if self.use_cuda else torch.FloatTensor(state)
             state = state.unsqueeze(0)
             action_values = self.net(state, model='online')
+            print('action_values \n')
+            print(action_values)
+            print('arg \n')
+            print(torch.argmax(action_values, axis=1))
             action_idx = torch.argmax(action_values, axis=1).item()
 
         # decrease exploration_rate
