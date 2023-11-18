@@ -61,7 +61,7 @@ for e in range(episodes):
 
         # 5. Agent performs action
         next_state, reward, done, info = env.step(action)
-        print(f'Next State {next_state}')
+        print(f"Next State {next_state}")
 
         # 6. Remember
         mario.cache(state, next_state, action, reward, done)
