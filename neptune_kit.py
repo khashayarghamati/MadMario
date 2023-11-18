@@ -1,5 +1,5 @@
 import neptune
-from neptune.types import File
+
 
 class Neptune:
     def __new__(cls):
@@ -9,8 +9,8 @@ class Neptune:
 
     def init(self):
         self.run = neptune.init_run(
-            project="khashayar/Mario",
-            api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiI2YzhjYmU2Zi03ODBjLTQ4YjEtODAzMy1lOTJhN2Q1YWU1YjUifQ==",
+            project="ghamati71/SML",
+            api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJhMjQ1YWIxMC02YzA1LTQ1ZjctOTBjOC03MGY0NWIzZjkyNGQifQ==",
         )
         print("Neptune initialized")
 
