@@ -100,15 +100,15 @@ class MetricLogger():
             f"Time {datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')}"
         )
 
-        Neptune().save_chart("Episode", episode)
-        Neptune().save_chart("Step", step)
-        Neptune().save_chart("Epsilon", epsilon)
-        Neptune().save_chart("Mean_Reward", mean_ep_reward)
-        Neptune().save_chart("Mean_Length", mean_ep_length)
-        Neptune().save_chart("Mean_Loss", mean_ep_loss)
-        Neptune().save_chart("Mean_Q_Value", mean_ep_q)
-        Neptune().save_chart("Time_Delta", time_since_last_record)
-        Neptune().save_chart("Time", datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
+        # Neptune().save_chart("Episode", episode)
+        # Neptune().save_chart("Step", step)
+        # Neptune().save_chart("Epsilon", epsilon)
+        # Neptune().save_chart("Mean_Reward", mean_ep_reward)
+        # Neptune().save_chart("Mean_Length", mean_ep_length)
+        # Neptune().save_chart("Mean_Loss", mean_ep_loss)
+        # Neptune().save_chart("Mean_Q_Value", mean_ep_q)
+        # Neptune().save_chart("Time_Delta", time_since_last_record)
+        # Neptune().save_chart("Time", datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
 
         with open(self.save_log, "a") as f:
             f.write(
@@ -121,6 +121,6 @@ class MetricLogger():
         for metric in ["ep_rewards", "ep_lengths", "ep_avg_losses", "ep_avg_qs"]:
             plt.plot(getattr(self, f"moving_avg_{metric}"))
             plt.savefig(getattr(self, f"{metric}_plot"))
-            Neptune().save_figure(f"{metric}_plot", plt.gcf())
+            # Neptune().save_figure(f"{metric}_plot", plt.gcf())
 
             plt.clf()
